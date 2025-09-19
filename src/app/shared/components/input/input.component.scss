@@ -1,0 +1,39 @@
+.custom-input {
+	--padding-start: 0;
+	--inner-padding-end: 0;
+	margin-bottom: 1rem;
+
+	ion-label {
+		font-weight: 500;
+
+		.required-asterisk {
+			color: var(--ion-color-danger);
+		}
+	}
+
+	ion-input {
+		--padding-start: 16px;
+		--padding-end: 16px;
+		--padding-top: 12px;
+		--padding-bottom: 12px;
+		background: transparent;
+		border-radius: 8px;
+	}
+}
+
+.toggle-password {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	color: #667eea;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: 500;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}

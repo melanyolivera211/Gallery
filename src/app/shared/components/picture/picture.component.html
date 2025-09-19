@@ -1,0 +1,19 @@
+<ion-card class="picture-card" (click)="navigateToPicture()">
+
+	@if(picture){
+
+	<img [src]="picture.url" [alt]="picture.path" class="picture-image" />
+
+	<ion-card-content class="picture-content">
+
+		@if (picture.createdat) {
+
+		<p class="picture-date">{{ picture.createdat.toDate() | date:'medium' }}</p>
+
+		}
+
+	</ion-card-content>
+
+	}
+
+</ion-card>

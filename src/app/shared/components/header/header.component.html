@@ -1,0 +1,46 @@
+<header class="app-header">
+
+	<div class="header-content">
+
+		<div class="logo-section">
+
+			<a routerLink="/home" class="logo-link">
+				<span class="logo-text">Gallery</span>
+			</a>
+
+		</div>
+
+		<nav class="navigation-section">
+
+			<div class="user-profile">
+
+				<div class="avatar-container">
+
+					@if(user && user.picture){
+
+					<img [src]="user.picture" alt="Profile" class="avatar-image" (click)="navigateToProfile()">
+
+					}@else{
+
+					<div class="avatar-placeholder" (click)="navigateToLogin()"></div>
+
+					}
+
+				</div>
+
+				@if(user){
+
+				<span class="user-name">{{ user.name }} {{ user.surname }}</span>
+
+				}@else{
+
+				<span class="login-prompt">Sign In</span>
+				}
+
+			</div>
+
+		</nav>
+
+	</div>
+
+</header>

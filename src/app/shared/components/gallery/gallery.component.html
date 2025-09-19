@@ -1,0 +1,34 @@
+<!-- gallery.component.html -->
+<ion-content class="gallery-content">
+	<!-- Botón para agregar foto -->
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+		<ion-fab-button (click)="takePicture()">
+			<ion-icon name="camera"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+
+	<!-- Lista de fotos agrupadas por fecha -->
+	@for (dateGroup of groupedPictures; track dateGroup.date) {
+	<div class="date-group">
+		<ion-item-divider class="date-divider">
+			<ion-label>{{ dateGroup.date | date:'fullDate' }}</ion-label>
+		</ion-item-divider>
+
+		<div class="pictures-grid">
+			@for (picture of dateGroup.pictures; track picture.id) {
+			<div class="picture-item">
+				<app-picture [picture]="picture"></app-picture>
+			</div>
+			}
+		</div>
+	</div>
+	}
+
+	@if (pictures.length === 0) {
+	<div class="empty-state">
+		<ion-icon name="images" class="empty-icon"></ion-icon>
+		<h3>No hay fotos aún</h3>
+		<p>Haz clic en el botón + para agregar una foto</p>
+	</div>
+	}
+</ion-content>

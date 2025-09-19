@@ -1,0 +1,47 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"baseUrl": "./",
+		"paths": {
+
+			"@shared/*": ["src/app/shared/*"],
+			"@core/*": ["src/app/core/*"],
+			"@guards/*": ["src/app/core/guards/*"],
+			"@env/*": ["src/environments/*"],
+			"@models/*": ["src/domain/models/*"],
+			"@interfaces/*": ["src/domain/interfaces/*"],
+			"@user/*": ["src/app/core/services/firebase/user/*"],
+			"@auth/*": ["src/app/core/services/firebase/auth/*"],
+			"@gallery/*": ["src/app/core/services/firebase/gallery/*"],
+			"@token/*": ["src/app/core/services/storage/token/*"],
+			"@storage-gallery/*": ["src/app/core/services/supabase/buckets/gallery/*"]
+
+		}, "outDir": "./dist/out-tsc",
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"sourceMap": true,
+		"declaration": false,
+		"downlevelIteration": true,
+		"experimentalDecorators": true,
+		"moduleResolution": "node",
+		"importHelpers": true,
+		"target": "es2022",
+		"module": "es2020",
+		"lib": [
+			"es2018", 
+			"dom"
+		],
+		"useDefineForClassFields": false
+	},
+	"angularCompilerOptions": {
+		"enableI18nLegacyMessageIdFormat": false,
+		"strictInjectionParameters": true,
+		"strictInputAccessModifiers": true,
+		"strictTemplates": true
+	}
+}

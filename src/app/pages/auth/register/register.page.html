@@ -1,0 +1,28 @@
+<app-loading></app-loading>
+
+<div class="register-page">
+
+	<div class="register-container">
+
+		<div class="register-header">
+
+			<h1>Create Account</h1>
+			<p>Join our community by creating a new account</p>
+
+		</div>
+
+		<div class="register-content">
+
+			<app-user-form (onSubmit)="onUserSubmit($event)"></app-user-form>
+
+			<div class="login-footer">
+
+				<p>Don't have an account? <a (click)="navigateToLogin()">Sign In</a></p>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

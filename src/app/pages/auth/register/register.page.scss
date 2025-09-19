@@ -1,0 +1,154 @@
+.register-page {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+	padding: 20px;
+}
+
+.register-container {
+	background-color: white;
+	border-radius: 12px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 700px;
+	max-height: 90vh;
+	overflow: hidden;
+}
+
+.register-header {
+	padding: 30px 30px 10px;
+	text-align: center;
+	background-color: #4a90e2;
+	color: white;
+
+	h1 {
+		margin: 0 0 10px;
+		font-size: 28px;
+		font-weight: 600;
+	}
+
+	p {
+		margin: 0;
+		opacity: 0.9;
+		font-size: 16px;
+	}
+}
+
+.register-content {
+
+	padding: 30px;
+	max-height: 80vh;
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: #f1f1f1;
+		border-radius: 4px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+
+		background: #c1c1c1;
+		border-radius: 4px;
+
+		&:hover {
+
+			background: #a8a8a8;
+
+		}
+
+	}
+
+}
+
+.register-footer {
+	padding: 20px 30px;
+	text-align: center;
+	border-top: 1px solid #eee;
+	background-color: #f9f9f9;
+
+	p {
+		margin: 0;
+		color: #666;
+
+		a {
+			color: #4a90e2;
+			text-decoration: none;
+			font-weight: 500;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+	.register-container {
+		margin: 10px;
+		width: calc(100% - 20px);
+	}
+
+	.register-header,
+	.register-content,
+	.register-footer {
+		padding: 20px;
+	}
+}
+
+.login-footer {
+	padding: 20px 30px;
+	text-align: center;
+	border-top: 1px solid #eee;
+	background-color: #f9f9f9;
+
+	p {
+		margin: 0;
+		color: #666;
+
+		a {
+			color: #667eea;
+			text-decoration: none;
+			font-weight: 500;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+@media (max-width: 576px) {
+
+	.register-page {
+		padding: 10px;
+	}
+
+	.register-header {
+		h1 {
+			font-size: 24px;
+		}
+
+		p {
+			font-size: 14px;
+		}
+	}
+}
+
+.register-header {
+
+	flex-shrink: 0;
+
+}
+
+.login-footer {
+
+	flex-shrink: 0;
+
+}

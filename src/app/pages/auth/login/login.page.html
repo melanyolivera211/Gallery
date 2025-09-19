@@ -1,0 +1,48 @@
+<app-loading></app-loading>
+
+<div class="login-page">
+
+	<div class="login-container">
+
+		<div class="login-header">
+
+			<h1>Welcome Back</h1>
+			<p>Sign in to your account to continue</p>
+
+		</div>
+
+		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+
+			<div class="form-group">
+
+				<app-input id="email" formControlName="email" type="email" label="Email Address"
+					placeholder="Enter your email address" [required]="true" [minLength]="3"
+					errorMessage="Please enter a valid email address"></app-input>
+
+			</div>
+
+			<div class="form-group">
+
+				<div class="password-input-container">
+
+					<app-input id="password" formControlName="password" type="password" label="Password"
+						placeholder="Enter your password" [required]="true" [minLength]="3"
+						errorMessage="Please enter a valid password"></app-input>
+
+				</div>
+
+			</div>
+
+			<app-button type="submit">Sign In</app-button>
+
+		</form>
+
+		<div class="login-footer">
+
+			<p>Don't have an account? <a href="javascript:void(0)" (click)="navigateToRegister()">Sign up</a></p>
+
+		</div>
+
+	</div>
+
+</div>

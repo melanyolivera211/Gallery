@@ -1,0 +1,112 @@
+.app-header {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	width: 100%;
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	
+	@media (prefers-color-scheme: dark) {
+		background-color: rgba(0, 0, 0, 0.8);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+}
+
+.header-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.75rem 1.5rem;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.logo-section {
+	.logo-link {
+		text-decoration: none;
+		color: inherit;
+		
+		.logo-text {
+			font-size: 1.5rem;
+			font-weight: 600;
+			letter-spacing: -0.5px;
+		}
+	}
+}
+
+.navigation-section {
+	display: flex;
+	align-items: center;
+}
+
+.user-profile {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	cursor: pointer;
+	padding: 0.5rem;
+	border-radius: 8px;
+	transition: background-color 0.2s ease;
+	
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.05);
+		
+		@media (prefers-color-scheme: dark) {
+			background-color: rgba(255, 255, 255, 0.05);
+		}
+	}
+}
+
+.avatar-container {
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 50%;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.1);
+	
+	@media (prefers-color-scheme: dark) {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+}
+
+.avatar-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.avatar-placeholder {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+	color: #666;
+	
+	@media (prefers-color-scheme: dark) {
+		color: #aaa;
+	}
+}
+
+.user-name {
+	font-weight: 500;
+	font-size: 0.9rem;
+	
+	@media (max-width: 600px) {
+		display: none;
+	}
+}
+
+.login-prompt {
+	font-weight: 500;
+	font-size: 0.9rem;
+	color: #666;
+	
+	@media (prefers-color-scheme: dark) {
+		color: #aaa;
+	}
+}
