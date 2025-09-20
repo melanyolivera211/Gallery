@@ -55,10 +55,11 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/home']);
       } else {
         this.markFormGroupTouched();
-        throw new Error('Please fill all required fields correctly');
+          throw new Error('FORM_INVALID');
       }
     } catch (e: any) {
-      await this.toastService.showError(e.message);
+        const key = e?.message === 'FORM_INVALID' ? 'app.errors.formInvalid' : 'app.errors.unexpected';
+        await this.toastService.showErrorKey(key);
     } finally {
       this.loadingService.hide();
     }

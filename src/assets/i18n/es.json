@@ -1,0 +1,75 @@
+{
+  "app": {
+    "title": "Galería",
+    "login": {
+      "email": "Correo",
+      "password": "Contraseña",
+      "rememberMe": "Recordarme",
+      "signIn": "Iniciar sesión",
+      "haveAccount": "¿Ya tienes cuenta?",
+      "goRegister": "Crear cuenta",
+      "forgot": "¿Olvidaste tu contraseña?"
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "subtitle": "Únete creando una nueva cuenta",
+      "submit": "Registrarse"
+    },
+    "home": {
+      "hello": "Bienvenido",
+      "setHome": "Poner como fondo de inicio",
+      "setLock": "Poner como fondo de bloqueo"
+    },
+    "gallery": {
+      "emptyTitle": "No hay fotos aún",
+      "emptyDescription": "Haz clic en el botón + para agregar una foto",
+      "actionsTitle": "Elige una acción"
+    },
+    "profile": {
+      "title": "Actualizar perfil",
+      "save": "Guardar",
+      "editTitle": "Editar usuario",
+      "createTitle": "Crear nuevo usuario",
+      "name": "Nombre",
+      "namePh": "Ingresa el nombre",
+      "nameError": "El nombre es obligatorio y debe tener al menos 2 caracteres",
+      "surname": "Apellido",
+      "surnamePh": "Ingresa el apellido",
+      "surnameError": "El apellido es obligatorio y debe tener al menos 2 caracteres",
+      "email": "Correo",
+      "emailPh": "Ingresa el correo electrónico",
+      "emailError": "Ingresa un correo electrónico válido",
+      "password": "Contraseña",
+      "passwordPh": "Ingresa la contraseña",
+      "passwordKeep": "Deja en blanco para mantener la actual",
+      "passwordError": "La contraseña debe tener al menos 6 caracteres",
+      "picture": "Foto de perfil",
+      "changePicture": "Cambiar foto",
+      "takePicture": "Tomar foto",
+      "selectFromGallery": "Seleccionar de la galería",
+      "update": "Actualizar",
+      "create": "Crear"
+    },
+    "common": {
+      "ok": "Aceptar",
+      "cancel": "Cancelar",
+      "loading": "Cargando...",
+      "logout": "Cerrar sesión"
+    },
+    "errors": {
+      "formInvalid": "Completa correctamente los campos requeridos.",
+      "unexpected": "Algo salió mal. Intenta nuevamente.",
+      "loginFailed": "No se pudo iniciar sesión. Verifica tus credenciales.",
+      "registerFailed": "No se pudo registrar. Intenta nuevamente.",
+      "loadGallery": "No se pudo cargar tu galería.",
+      "uploadFailed": "No se pudo subir la imagen. Intenta nuevamente.",
+      "wallpaperFailed": "No se pudo aplicar el fondo en este dispositivo."
+    },
+    "success": {
+      "login": "¡Bienvenido de nuevo!",
+      "register": "¡Cuenta creada con éxito!",
+      "upload": "¡Foto subida con éxito!",
+      "wallpaperSet": "¡Fondo aplicado con éxito!"
+    }
+  }
+}

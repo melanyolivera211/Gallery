@@ -69,7 +69,7 @@ export class RegisterPage implements OnInit {
 
       this.router.navigate(['/home']);
     } catch (e: any) {
-      this.toastService.showError(e.message);
+      this.toastService.showErrorKey('app.errors.registerFailed');
     } finally {
       this.loadingService.hide();
     }

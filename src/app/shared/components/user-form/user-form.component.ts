@@ -104,7 +104,7 @@ export class UserFormComponent implements OnInit {
         this.processImage(image.dataUrl);
       }
     } catch (e: any) {
-      this.toastService.showError(e.message);
+      this.toastService.showErrorKey('app.errors.unexpected');
     }
   }
 
@@ -133,7 +133,7 @@ export class UserFormComponent implements OnInit {
         });
       })
       .catch((e: any) => {
-        this.toastService.showError(e.message);
+        this.toastService.showErrorKey('app.errors.unexpected');
       });
   }
 

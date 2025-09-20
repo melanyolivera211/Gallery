@@ -5,12 +5,14 @@
 		<div class="logo-section">
 
 			<a routerLink="/home" class="logo-link">
-				<span class="logo-text">Gallery</span>
+				<span class="logo-text">{{ 'app.title' | translate }}</span>
 			</a>
 
 		</div>
 
 		<nav class="navigation-section">
+
+			<app-toggle-translate></app-toggle-translate>
 
 			<div class="user-profile">
 
@@ -18,7 +20,7 @@
 
 					@if(user && user.picture){
 
-					<img [src]="user.picture" alt="Profile" class="avatar-image" (click)="navigateToProfile()">
+					<img [src]="user.picture" [alt]="'app.profile.picture' | translate" class="avatar-image" (click)="navigateToProfile()">
 
 					}@else{
 
@@ -32,9 +34,11 @@
 
 				<span class="user-name">{{ user.name }} {{ user.surname }}</span>
 
+				<ion-button size="small" fill="clear" color="danger" (click)="logout()">{{ 'app.common.logout' | translate }}</ion-button>
+
 				}@else{
 
-				<span class="login-prompt">Sign In</span>
+				<span class="login-prompt">{{ 'app.login.signIn' | translate }}</span>
 				}
 
 			</div>

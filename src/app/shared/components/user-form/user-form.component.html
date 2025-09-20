@@ -4,7 +4,7 @@
 
 		<ion-card-header>
 
-			<ion-card-title>{{ user ? 'Edit User' : 'Create New User' }}</ion-card-title>
+			<ion-card-title>{{ user ? ('app.profile.editTitle' | translate) : ('app.profile.createTitle' | translate) }}</ion-card-title>
 
 		</ion-card-header>
 
@@ -14,34 +14,34 @@
 
 				<div class="form-row">
 
-					<app-input formControlName="name" type="text" label="Name" placeholder="Enter user's name" [required]="true"
-						[minLength]="2" errorMessage="Name is required and must be at least 2 characters"></app-input>
+					<app-input formControlName="name" type="text" [label]="'app.profile.name' | translate" [placeholder]="'app.profile.namePh' | translate" [required]="true"
+						[minLength]="2" [errorMessage]="'app.profile.nameError' | translate"></app-input>
 
-					<app-input formControlName="surname" type="text" label="Surname" placeholder="Enter user's surname"
+					<app-input formControlName="surname" type="text" [label]="'app.profile.surname' | translate" [placeholder]="'app.profile.surnamePh' | translate"
 						[required]="true" [minLength]="2"
-						errorMessage="Surname is required and must be at least 2 characters"></app-input>
+						[errorMessage]="'app.profile.surnameError' | translate"></app-input>
 
 				</div>
 
-				<app-input formControlName="email" type="email" label="Email" placeholder="Enter user's email address"
+				<app-input formControlName="email" type="email" [label]="'app.profile.email' | translate" [placeholder]="'app.profile.emailPh' | translate"
 					[required]="true" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-					errorMessage="Please enter a valid email address"></app-input>
+					[errorMessage]="'app.profile.emailError' | translate"></app-input>
 
-				<app-input formControlName="password" type="password" label="Password"
-					[placeholder]="user ? 'Leave blank to keep current password' : 'Enter user password'" [required]="!user"
-					[minLength]="6" errorMessage="Password must be at least 6 characters"></app-input>
+				<app-input formControlName="password" type="password" [label]="'app.profile.password' | translate"
+					[placeholder]="user ? ('app.profile.passwordKeep' | translate) : ('app.profile.passwordPh' | translate)" [required]="!user"
+					[minLength]="6" [errorMessage]="'app.profile.passwordError' | translate"></app-input>
 
 				<div class="image-section">
 
 					<ion-label class="image-label">
-						Profile Picture
+						{{ 'app.profile.picture' | translate }}
 						<span class="required-asterisk" *ngIf="!user">*</span>
 
 					</ion-label>
 
 					<div class="image-preview" *ngIf="selectedImageUrl">
 
-						<img [src]="selectedImageUrl" alt="Profile preview">
+						<img [src]="selectedImageUrl" [alt]="'app.profile.picture' | translate">
 
 						<ion-button fill="clear" color="danger" (click)="removeImage()">
 
@@ -54,7 +54,7 @@
 					<ion-button expand="block" fill="outline" (click)="takePicture()">
 
 						<ion-icon name="camera" slot="start"></ion-icon>
-						{{ selectedImageUrl ? 'Change Picture' : 'Take Picture' }}
+						{{ selectedImageUrl ? ('app.profile.changePicture' | translate) : ('app.profile.takePicture' | translate) }}
 
 					</ion-button>
 
@@ -63,7 +63,7 @@
 					<ion-button expand="block" fill="outline" (click)="fileInput.click()">
 
 						<ion-icon name="image" slot="start"></ion-icon>
-						Select from Gallery
+						{{ 'app.profile.selectFromGallery' | translate }}
 
 					</ion-button>
 
@@ -72,7 +72,7 @@
 				<div class="form-actions">
 
 					<app-button type="submit" [disabled]="userForm.invalid" [color]="userForm.invalid ? 'medium' : 'primary'">
-						{{ user ? 'Update' : 'Create' }} User
+						{{ user ? ('app.profile.update' | translate) : ('app.profile.create' | translate) }}
 					</app-button>
 
 				</div>

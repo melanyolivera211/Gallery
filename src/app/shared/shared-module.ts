@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ButtonComponent } from './components/buttons/button/button.component';
 import { FloatingButtonComponent } from './components/buttons/floating-button/floating-button.component';
@@ -19,6 +20,7 @@ import { PictureComponent } from './components/picture/picture.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 
 import { Toast } from './services/toast/toast';
+import { ActionSheetController } from '@ionic/angular';
 
 @NgModule({
 
@@ -43,6 +45,7 @@ import { Toast } from './services/toast/toast';
 		IonicModule.forRoot(),
 		ReactiveFormsModule,
 		RouterModule,
+		TranslateModule,
 
 	], exports: [
 
@@ -51,6 +54,7 @@ import { Toast } from './services/toast/toast';
 		IonicModule,
 		ReactiveFormsModule,
 		RouterModule,
+		TranslateModule,
 		ButtonComponent,
 		FloatingButtonComponent,
 		ToggleTranslateComponent,
@@ -65,7 +69,8 @@ import { Toast } from './services/toast/toast';
 
 	], providers: [
 
-		Toast
+			Toast,
+			ActionSheetController
 
 	]
 

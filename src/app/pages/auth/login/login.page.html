@@ -6,8 +6,10 @@
 
 		<div class="login-header">
 
-			<h1>Welcome Back</h1>
-			<p>Sign in to your account to continue</p>
+			<app-toggle-translate></app-toggle-translate>
+
+			<h1>{{ 'app.home.hello' | translate }}</h1>
+			<p>{{ 'app.login.signIn' | translate }}</p>
 
 		</div>
 
@@ -15,9 +17,9 @@
 
 			<div class="form-group">
 
-				<app-input id="email" formControlName="email" type="email" label="Email Address"
-					placeholder="Enter your email address" [required]="true" [minLength]="3"
-					errorMessage="Please enter a valid email address"></app-input>
+				<app-input id="email" formControlName="email" type="email" [label]="'app.login.email' | translate"
+					[placeholder]="'app.login.email' | translate" [required]="true" [minLength]="3"
+					[errorMessage]="'app.login.email' | translate"></app-input>
 
 			</div>
 
@@ -25,21 +27,21 @@
 
 				<div class="password-input-container">
 
-					<app-input id="password" formControlName="password" type="password" label="Password"
-						placeholder="Enter your password" [required]="true" [minLength]="3"
-						errorMessage="Please enter a valid password"></app-input>
+					<app-input id="password" formControlName="password" type="password" [label]="'app.login.password' | translate"
+						[placeholder]="'app.login.password' | translate" [required]="true" [minLength]="3"
+						[errorMessage]="'app.login.password' | translate"></app-input>
 
 				</div>
 
 			</div>
 
-			<app-button type="submit">Sign In</app-button>
+			<app-button type="submit">{{ 'app.login.signIn' | translate }}</app-button>
 
 		</form>
 
 		<div class="login-footer">
 
-			<p>Don't have an account? <a href="javascript:void(0)" (click)="navigateToRegister()">Sign up</a></p>
+			<p>{{ 'app.register.title' | translate }}? <a href="javascript:void(0)" (click)="navigateToRegister()">{{ 'app.register.submit' | translate }}</a></p>
 
 		</div>
 

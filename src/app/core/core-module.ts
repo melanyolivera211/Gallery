@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { firebaseConfig, supabaseConfig } from './config/env.config';
 
@@ -16,8 +17,26 @@ import { Token } from './services/storage/token/token';
 import { Loading } from './services/loading/loading';
 import { Auth as AuthGuard } from './guards/auth/auth';
 
-@NgModule({
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ActionSheetController } from '@ionic/angular';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+@NgModule({
+  imports: [
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
+  ],
   providers: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
@@ -33,6 +52,7 @@ import { Auth as AuthGuard } from './guards/auth/auth';
     Loading,
     Token,
     AuthGuard,
+    ActionSheetController,
   ],
 })
 export class CoreModule {}

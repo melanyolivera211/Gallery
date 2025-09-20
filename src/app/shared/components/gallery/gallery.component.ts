@@ -10,6 +10,9 @@ import { Gallery as GalleryService } from '@gallery/gallery';
 import { Gallery as StorageGalleryService } from '@storage-gallery/gallery';
 import { Loading as LoadingService } from '@core/services/loading/loading';
 import { Toast as ToastService } from '@shared/services/toast/toast';
+import { ActionSheetController } from '@ionic/angular';
+import { WallpaperService, WallpaperTarget } from '@shared/services/wallpaper/wallpaper';
+import { TranslateService } from '@ngx-translate/core';
 
 import { User } from '@user/entity/user.entity';
 import { BucketFile } from '@models/bucket-file.model';
@@ -41,7 +44,10 @@ export class GalleryComponent implements OnInit {
     private galleryService: GalleryService,
     private storageGalleryService: StorageGalleryService,
     private loadingService: LoadingService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private actionSheetCtrl: ActionSheetController,
+    private wallpaper: WallpaperService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -61,7 +67,7 @@ export class GalleryComponent implements OnInit {
           this.pictures = t;
           this.groupPictures();
         },
-        error: (e: any) => this.toastService.showError(e.message),
+  error: () => this.toastService.showErrorKey('app.errors.loadGallery'),
       });
     }
   }
@@ -101,7 +107,7 @@ export class GalleryComponent implements OnInit {
         });
       }
     } catch (e: any) {
-      this.toastService.showError(e.message);
+      this.toastService.showErrorKey('app.errors.uploadFailed');
     } finally {
       this.loadingService.hide();
     }
@@ -134,5 +140,47 @@ export class GalleryComponent implements OnInit {
       .sort((a, b) => b.date.getTime() - a.date.getTime());
 
     this.loadingService.hide();
+  }
+
+  public async openPictureActions(picture: Picture): Promise<void> {
+    try {
+      const t = this.translate.instant.bind(this.translate);
+      const actionSheet = await this.actionSheetCtrl.create({
+        header: t('app.gallery.actionsTitle') || 'Actions',
+        buttons: [
+          {
+            text: t('app.home.setHome'),
+            icon: 'home',
+            handler: () => this.setAsWallpaper(picture, 'home'),
+          },
+          {
+            text: t('app.home.setLock'),
+            icon: 'lock-closed',
+            handler: () => this.setAsWallpaper(picture, 'lock'),
+          },
+          {
+            text: t('app.common.cancel'),
+            icon: 'close',
+            role: 'cancel',
+          },
+        ],
+      });
+      await actionSheet.present();
+    } catch (e) {
+      // no-op
+    }
+  }
+
+  private async setAsWallpaper(picture: Picture, target: WallpaperTarget): Promise<void> {
+    if (!picture?.url) return;
+    try {
+      this.loadingService.show();
+      await this.wallpaper.setWallpaper(picture.url, target);
+      this.toastService.showSuccessKey('app.success.wallpaperSet');
+    } catch (e) {
+      this.toastService.showErrorKey('app.errors.wallpaperFailed');
+    } finally {
+      this.loadingService.hide();
+    }
   }
 }

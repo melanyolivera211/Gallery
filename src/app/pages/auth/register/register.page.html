@@ -6,8 +6,8 @@
 
 		<div class="register-header">
 
-			<h1>Create Account</h1>
-			<p>Join our community by creating a new account</p>
+			<h1>{{ 'app.register.title' | translate }}</h1>
+			<p>{{ 'app.register.subtitle' | translate }}</p>
 
 		</div>
 
@@ -17,7 +17,7 @@
 
 			<div class="login-footer">
 
-				<p>Don't have an account? <a (click)="navigateToLogin()">Sign In</a></p>
+				<p>{{ 'app.login.haveAccount' | translate }} <a (click)="navigateToLogin()">{{ 'app.login.signIn' | translate }}</a></p>
 
 			</div>
 

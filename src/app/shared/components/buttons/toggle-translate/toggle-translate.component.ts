@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppTranslateService } from '@core/services/translate/translate';
 
 @Component({
   selector: 'app-toggle-translate',
@@ -7,7 +8,16 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
 })
 export class ToggleTranslateComponent implements OnInit {
-  public constructor() {}
+  public lang: 'en' | 'es' = 'en';
 
-  public ngOnInit(): void {}
+  public constructor(private i18n: AppTranslateService) {}
+
+  public ngOnInit(): void {
+    this.lang = (this.i18n.current() as 'en' | 'es') || 'en';
+  }
+
+  public async onToggle(): Promise<void> {
+    await this.i18n.toggle();
+    this.lang = this.i18n.current() as 'en' | 'es';
+  }
 }

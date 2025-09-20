@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppTranslateService } from '@core/services/translate/translate';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
 })
 export class AppComponent implements OnInit {
-  public constructor() {}
+  public constructor(private i18n: AppTranslateService) {}
 
-  public async ngOnInit(): Promise<void> {}
+  public async ngOnInit(): Promise<void> {
+    this.i18n.init();
+  }
 }

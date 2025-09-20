@@ -27,7 +27,7 @@ export class Auth implements CanActivate {
   }
 
   private validate(hasInited: boolean): boolean {
-    if (!hasInited) this.router.navigate(['/home']);
+    if (!hasInited) this.router.navigate(['/login']);
 
     return hasInited;
   }

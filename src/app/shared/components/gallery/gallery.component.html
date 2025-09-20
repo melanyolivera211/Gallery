@@ -16,7 +16,7 @@
 
 		<div class="pictures-grid">
 			@for (picture of dateGroup.pictures; track picture.id) {
-			<div class="picture-item">
+			<div class="picture-item" (click)="openPictureActions(picture)">
 				<app-picture [picture]="picture"></app-picture>
 			</div>
 			}
@@ -27,8 +27,8 @@
 	@if (pictures.length === 0) {
 	<div class="empty-state">
 		<ion-icon name="images" class="empty-icon"></ion-icon>
-		<h3>No hay fotos aún</h3>
-		<p>Haz clic en el botón + para agregar una foto</p>
+		<h3>{{ 'app.gallery.emptyTitle' | translate }}</h3>
+		<p>{{ 'app.gallery.emptyDescription' | translate }}</p>
 	</div>
 	}
 </ion-content>

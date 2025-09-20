@@ -1,0 +1,75 @@
+{
+  "app": {
+    "title": "Gallery",
+    "login": {
+      "email": "Email",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "signIn": "Sign in",
+      "haveAccount": "Already have an account?",
+      "goRegister": "Create account",
+      "forgot": "Forgot password?"
+    },
+    "register": {
+      "title": "Create account",
+      "subtitle": "Join our community by creating a new account",
+      "submit": "Register"
+    },
+    "home": {
+      "hello": "Welcome",
+      "setHome": "Set as home wallpaper",
+      "setLock": "Set as lock wallpaper"
+    },
+    "gallery": {
+      "emptyTitle": "No photos yet",
+      "emptyDescription": "Click the + button to add a photo",
+      "actionsTitle": "Choose an action"
+    },
+    "profile": {
+      "title": "Update profile",
+      "save": "Save",
+      "editTitle": "Edit User",
+      "createTitle": "Create New User",
+      "name": "Name",
+      "namePh": "Enter user's name",
+      "nameError": "Name is required and must be at least 2 characters",
+      "surname": "Surname",
+      "surnamePh": "Enter user's surname",
+      "surnameError": "Surname is required and must be at least 2 characters",
+      "email": "Email",
+      "emailPh": "Enter user's email address",
+      "emailError": "Please enter a valid email address",
+      "password": "Password",
+      "passwordPh": "Enter user password",
+      "passwordKeep": "Leave blank to keep current password",
+      "passwordError": "Password must be at least 6 characters",
+      "picture": "Profile Picture",
+      "changePicture": "Change Picture",
+      "takePicture": "Take Picture",
+      "selectFromGallery": "Select from Gallery",
+      "update": "Update",
+      "create": "Create"
+    },
+    "common": {
+      "ok": "OK",
+      "cancel": "Cancel",
+      "loading": "Loading...",
+      "logout": "Log out"
+    },
+    "errors": {
+      "formInvalid": "Please fill all required fields correctly.",
+      "unexpected": "Something went wrong. Please try again.",
+      "loginFailed": "Login failed. Check your credentials.",
+      "registerFailed": "Registration failed. Please try again.",
+      "loadGallery": "Could not load your gallery.",
+      "uploadFailed": "Upload failed. Please try again.",
+      "wallpaperFailed": "Could not set wallpaper on this device."
+    },
+    "success": {
+      "login": "Welcome back!",
+      "register": "Account created successfully!",
+      "upload": "Photo uploaded successfully!",
+      "wallpaperSet": "Wallpaper applied successfully!"
+    }
+  }
+}
