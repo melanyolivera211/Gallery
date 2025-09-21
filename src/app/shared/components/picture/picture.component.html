@@ -8,7 +8,7 @@
 
 		@if (picture.createdat) {
 
-		<p class="picture-date">{{ picture.createdat.toDate() | date:'medium' }}</p>
+		<p class="picture-date">{{ picture.createdat.toDate() | localizedDate:'medium' }}</p>
 
 		}
 

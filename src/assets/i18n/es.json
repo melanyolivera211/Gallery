@@ -7,8 +7,7 @@
       "rememberMe": "Recordarme",
       "signIn": "Iniciar sesión",
       "haveAccount": "¿Ya tienes cuenta?",
-      "goRegister": "Crear cuenta",
-      "forgot": "¿Olvidaste tu contraseña?"
+      "goRegister": "Crear cuenta"
     },
     "register": {
       "title": "Crear cuenta",
@@ -63,7 +62,8 @@
       "registerFailed": "No se pudo registrar. Intenta nuevamente.",
       "loadGallery": "No se pudo cargar tu galería.",
       "uploadFailed": "No se pudo subir la imagen. Intenta nuevamente.",
-      "wallpaperFailed": "No se pudo aplicar el fondo en este dispositivo."
+      "wallpaperFailed": "No se pudo aplicar el fondo en este dispositivo.",
+      "reauth": "Por seguridad, vuelve a iniciar sesión para cambiar el correo o la contraseña."
     },
     "success": {
       "login": "¡Bienvenido de nuevo!",

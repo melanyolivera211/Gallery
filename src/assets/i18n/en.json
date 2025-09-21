@@ -7,8 +7,7 @@
       "rememberMe": "Remember me",
       "signIn": "Sign in",
       "haveAccount": "Already have an account?",
-      "goRegister": "Create account",
-      "forgot": "Forgot password?"
+      "goRegister": "Create account"
     },
     "register": {
       "title": "Create account",
@@ -63,7 +62,8 @@
       "registerFailed": "Registration failed. Please try again.",
       "loadGallery": "Could not load your gallery.",
       "uploadFailed": "Upload failed. Please try again.",
-      "wallpaperFailed": "Could not set wallpaper on this device."
+      "wallpaperFailed": "Could not set wallpaper on this device.",
+      "reauth": "For security, please sign in again to change email or password."
     },
     "success": {
       "login": "Welcome back!",

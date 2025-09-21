@@ -4,7 +4,7 @@ import { FilePicker } from '@capawesome/capacitor-file-picker';
 @Injectable({ providedIn: 'root' })
 export class FilePickerService {
   async pickImage(): Promise<File | null> {
-    const result = await FilePicker.pickImages({ multiple: false });
+    const result = await FilePicker.pickImages();
     if (!result.files || result.files.length === 0) return null;
     const f = result.files[0];
     if (f.blob) {

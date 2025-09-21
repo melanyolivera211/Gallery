@@ -150,6 +150,17 @@
 				"$tsc"
 			],
 			"group": "build"
+		},
+		{
+			"label": "build profile email/password + header back",
+			"type": "shell",
+			"command": "npm run build",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
 		}
 	]
 }

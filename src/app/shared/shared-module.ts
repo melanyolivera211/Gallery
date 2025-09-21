@@ -21,6 +21,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 
 import { Toast } from './services/toast/toast';
 import { ActionSheetController } from '@ionic/angular';
+import { LocalizedDatePipe } from './pipes/localized-date.pipe';
 
 @NgModule({
 
@@ -39,16 +40,15 @@ import { ActionSheetController } from '@ionic/angular';
 		UserFormComponent
 
 	], imports: [
-
 		CommonModule,
 		FormsModule,
 		IonicModule.forRoot(),
 		ReactiveFormsModule,
 		RouterModule,
 		TranslateModule,
+		LocalizedDatePipe
 
 	], exports: [
-
 		CommonModule,
 		FormsModule,
 		IonicModule,
@@ -65,10 +65,9 @@ import { ActionSheetController } from '@ionic/angular';
 		LinkComponent,
 		PictureComponent,
 		LoadingComponent,
-		UserFormComponent
-
+		UserFormComponent,
+		LocalizedDatePipe
 	], providers: [
-
 			Toast,
 			ActionSheetController
 

@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { firebaseConfig, supabaseConfig } from './config/env.config';
@@ -24,6 +26,9 @@ import { ActionSheetController } from '@ionic/angular';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+// Register Spanish locale data once
+registerLocaleData(localeEs);
 
 @NgModule({
   imports: [
@@ -53,6 +58,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     Token,
     AuthGuard,
     ActionSheetController,
+    {
+      provide: LOCALE_ID,
+      deps: [HttpClient],
+      useFactory: () => {
+
+        return 'en-US';
+      },
+    },
   ],
 })
 export class CoreModule {}

@@ -11,6 +11,10 @@ import {
   onAuthStateChanged,
   browserSessionPersistence,
   setPersistence,
+  updateEmail as afUpdateEmail,
+  updatePassword as afUpdatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
 } from '@angular/fire/auth';
 import { FirebaseError } from '@angular/fire/app';
 import { User as UserService } from '@user/user';
@@ -118,4 +122,26 @@ export class Auth {
   public setUser(user: User | undefined) {
     return this._loggedUser.next(user);
   }
+
+  public getAuthEmail(): string | null {
+    return this.auth.currentUser?.email ?? null;
+  }
+
+  public async updateEmail(newEmail: string): Promise<void> {
+    if (!this.auth.currentUser) throw new Error('No authenticated user');
+    await afUpdateEmail(this.auth.currentUser, newEmail);
+  }
+
+  public async updatePassword(newPassword: string): Promise<void> {
+    if (!this.auth.currentUser) throw new Error('No authenticated user');
+    await afUpdatePassword(this.auth.currentUser, newPassword);
+  }
+
+  public async reauthenticate(currentPassword: string): Promise<void> {
+    const user = this.auth.currentUser;
+    if (!user || !user.email) throw new Error('No authenticated user');
+    const cred = EmailAuthProvider.credential(user.email, currentPassword);
+    await reauthenticateWithCredential(user, cred);
+  }
+
 }

@@ -1,5 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goHome()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>{{ 'app.profile.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,6 +17,6 @@
   </ion-header>
 
   <div class="update-user-wrapper">
-    <app-user-form [user]="user" (onSubmit)="onUserSubmit($event)"></app-user-form>
+    <app-user-form [user]="user" [email]="email" (onSubmit)="onUserSubmit($event)"></app-user-form>
   </div>
 </ion-content>

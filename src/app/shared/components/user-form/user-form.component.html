@@ -24,7 +24,7 @@
 				</div>
 
 				<app-input formControlName="email" type="email" [label]="'app.profile.email' | translate" [placeholder]="'app.profile.emailPh' | translate"
-					[required]="true" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+					[required]="true" [disabled]="!!user" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 					[errorMessage]="'app.profile.emailError' | translate"></app-input>
 
 				<app-input formControlName="password" type="password" [label]="'app.profile.password' | translate"

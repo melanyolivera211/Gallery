@@ -1,6 +1,8 @@
 import {
   Component,
   OnInit,
+  OnChanges,
+  SimpleChanges,
   Input,
   Output,
   EventEmitter,
@@ -10,6 +12,7 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Toast as ToastService } from '@shared/services/toast/toast';
+import { Auth as AuthService } from '@auth/auth';
 
 import { User } from '@user/entity/user.entity';
 import { Credential } from '@models/credential.model';
@@ -19,6 +22,7 @@ import { Timestamp } from '@angular/fire/firestore';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 import { v4 as uuidv4 } from 'uuid';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-form',
@@ -26,8 +30,9 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrls: ['./user-form.component.scss'],
   standalone: false,
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnInit, OnChanges {
   @Input() public user: User | null = null;
+  @Input() public email: string | null = null;
   @Output() public onSubmit = new EventEmitter<{
     user: User;
     cred: Credential;
@@ -39,26 +44,70 @@ export class UserFormComponent implements OnInit {
 
   public selectedImageFile: File | null = null;
   public selectedImageUrl: string | null = null;
+  private authSub?: Subscription;
 
   public constructor(
     private fb: FormBuilder,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private auth: AuthService
   ) {
     this.userForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       surname: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', []],
     });
   }
 
   public ngOnInit(): void {
-    if (this.user) {
-      this.userForm.patchValue({
-        name: this.user.name,
-        surname: this.user.surname,
-      });
+    this.applyInputsToForm();
+    // Fill email when auth state becomes available if still empty
+    this.authSub = this.auth.authState$.subscribe(a => {
+      const ctrl = this.userForm.get('email');
+      if (a?.email && ctrl && (!ctrl.value || ctrl.value.trim() === '')) {
+        ctrl.setValue(a.email, { emitEvent: false });
+      }
+    });
+  }
 
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes['user'] || changes['email']) {
+      this.applyInputsToForm();
+    }
+  }
+
+  public ngOnDestroy(): void {
+    this.authSub?.unsubscribe();
+  }
+
+  private applyInputsToForm(): void {
+    // Configure password validators based on edit/create mode
+    const pwdCtrl = this.userForm.get('password');
+    if (this.user) {
+      pwdCtrl?.clearValidators();
+      pwdCtrl?.updateValueAndValidity();
+    } else {
+      pwdCtrl?.setValidators([Validators.required, Validators.minLength(6)]);
+      pwdCtrl?.updateValueAndValidity();
+    }
+
+    // Patch values for edit or set blanks for create
+    const effectiveEmail = this.email ?? this.auth.getAuthEmail() ?? '';
+    this.userForm.patchValue({
+      name: this.user?.name ?? '',
+      surname: this.user?.surname ?? '',
+      email: effectiveEmail,
+      password: this.user ? '********' : ''
+    }, { emitEvent: false });
+
+
+    const emailCtrl = this.userForm.get('email');
+    if (this.user) {
+      emailCtrl?.disable({ emitEvent: false });
+    } else {
+      emailCtrl?.enable({ emitEvent: false });
+    }
+    if (this.user?.picture && !this.selectedImageFile) {
       this.selectedImageUrl = this.user.picture;
     }
   }
@@ -69,6 +118,9 @@ export class UserFormComponent implements OnInit {
     }
 
     const formValue = this.userForm.value;
+
+    const rawPassword = this.userForm.get('password')?.value ?? '';
+    const passwordToSend = this.user && rawPassword === '********' ? '' : rawPassword;
 
     const userData: User = {
       name: formValue.name,
@@ -81,8 +133,8 @@ export class UserFormComponent implements OnInit {
     };
 
     const credData: Credential = {
-      email: formValue.email,
-      password: formValue.password,
+      email: (this.user ? (this.email ?? this.auth.getAuthEmail() ?? '') : formValue.email),
+      password: passwordToSend,
     };
 
     this.onSubmit.emit({
