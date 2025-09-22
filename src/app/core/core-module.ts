@@ -48,7 +48,32 @@ registerLocaleData(localeEs);
     provideAuth(() => getAuth()),
     {
       provide: SupabaseClient,
-      useFactory: () => createClient(supabaseConfig.url, supabaseConfig.key),
+      useFactory: () => {
+        const GLOBAL_KEY = '__supabase_client_singleton__';
+        const g = globalThis as any;
+        if (g[GLOBAL_KEY]) {
+          return g[GLOBAL_KEY] as SupabaseClient;
+        }
+        // Simple in-memory storage (sync API) to avoid Web LockManager/localStorage
+        const mem = new Map<string, string>();
+        const memoryStorage = {
+          getItem: (key: string) => mem.get(key) ?? null,
+          setItem: (key: string, value: string) => { mem.set(key, value); },
+          removeItem: (key: string) => { mem.delete(key); },
+        } as unknown as Storage;
+
+        const client = createClient(supabaseConfig.url, supabaseConfig.key, {
+          auth: {
+            persistSession: false,
+            autoRefreshToken: false,
+            detectSessionInUrl: false,
+            storageKey: 'sb-no-auth',
+            storage: memoryStorage as any,
+          },
+        });
+        g[GLOBAL_KEY] = client;
+        return client;
+      },
     },
     Auth,
     User,
@@ -62,7 +87,6 @@ registerLocaleData(localeEs);
       provide: LOCALE_ID,
       deps: [HttpClient],
       useFactory: () => {
-
         return 'en-US';
       },
     },
