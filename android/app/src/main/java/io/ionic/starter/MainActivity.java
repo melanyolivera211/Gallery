@@ -10,7 +10,7 @@ import io.ionic.starter.plugins.wallpaper.MyWallpaperPlugin;
 public class MainActivity extends BridgeActivity {
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
+      		registerPlugin(MyWallpaperPlugin.class);
 			super.onCreate(savedInstanceState);
-			registerPlugin(MyWallpaperPlugin.class);
 		}
 }
